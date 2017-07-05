@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    int choice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,14 +70,20 @@ public class MainActivity extends AppCompatActivity {
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("單選項對話框");
-        String str[] = {"可樂", "紅茶", "汽水", "果汁"};
+        final String str[] = {"可樂", "紅茶", "汽水", "果汁"};
         builder.setSingleChoiceItems(str, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                choice = which;
             }
         });
-
+        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                TextView tv2 = (TextView) findViewById(R.id.textView2);
+                tv2.setText(str[choice]);
+            }
+        });
 
 
         builder.show();
