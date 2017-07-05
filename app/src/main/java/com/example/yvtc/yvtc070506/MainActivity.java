@@ -65,4 +65,21 @@ public class MainActivity extends AppCompatActivity {
 
         builder.show();
     }
+
+    public void click3(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("單選項對話框");
+        String str[] = {"可樂", "紅茶", "汽水", "果汁"};
+        builder.setSingleChoiceItems(str, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+
+
+        builder.show();
+    }
 }
