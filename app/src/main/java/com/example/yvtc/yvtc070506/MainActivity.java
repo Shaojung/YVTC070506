@@ -95,4 +95,24 @@ public class MainActivity extends AppCompatActivity {
 
         builder.show();
     }
+
+    public void click4(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("列表型對話框");
+        final String str[] = {"可樂", "紅茶", "汽水", "果汁"};
+        builder.setItems(str, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
+    }
 }
