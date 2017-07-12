@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     int tmp;
     boolean chks[] = new boolean[4];
     boolean tmpchks[] = new boolean[4];
+    AlertDialog cdiag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,12 +180,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, ed.getText().toString(), Toast.LENGTH_SHORT).show();
                 // ((AlertDialog) v.getParent().getParent().getParent()).dismiss();
+                Log.d("VIEW", v.getParent().toString());
+                cdiag.dismiss();
             }
         });
 
         builder.setView(diagView);
 
 
-        builder.show();
+        cdiag = builder.show();
     }
 }
