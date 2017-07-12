@@ -1,5 +1,6 @@
 package com.example.yvtc.yvtc070506;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
@@ -189,5 +190,24 @@ public class MainActivity extends AppCompatActivity {
 
 
         cdiag = builder.show();
+    }
+    public void click7(View v)
+    {
+        final ProgressDialog pd = new ProgressDialog(MainActivity.this);
+        pd.setMessage("Waiting....");
+        pd.show();
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                pd.dismiss();
+            }
+        }.start();
+
     }
 }
