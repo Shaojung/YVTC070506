@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     int choice = -1;
     int tmp;
+    boolean chks[] = new boolean[4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,17 +121,26 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("多選項對話框");
         final String str[] = {"可樂", "紅茶", "汽水", "果汁"};
-        boolean chks[] = new boolean[4];
+
         builder.setMultiChoiceItems(str, chks, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-
+                chks[which] = isChecked;
             }
         });
         builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                TextView tv3 = (TextView) findViewById(R.id.textView3);
+                String showStr = "";
+                int i;
+                for (i=0;i<chks.length;i++)
+                {
+                    if (chks[i]) {
+                        showStr += str[i] + ",";
+                    }
+                }
+                tv3.setText(showStr);
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
