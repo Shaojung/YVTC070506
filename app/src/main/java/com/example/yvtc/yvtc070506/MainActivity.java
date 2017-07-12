@@ -160,4 +160,14 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.show();
     }
+
+    public void click6(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("自訂對話框");
+
+        builder.setView(R.layout.diag_layout);
+
+        builder.show();
+    }
 }
